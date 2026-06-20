@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {% if form.errors %}
+                <div class="form-errors">
+                    {{ form.errors }}
+                </div>
+            {% endif %}
+            {{ form.as_p }}
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:400px;
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+h2{
+    margin-bottom:25px;
+    font-size:2rem;
+    background:linear-gradient(90deg,#667eea,#764ba2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+label{
+    display:block;
+    text-align:left;
+    margin:10px 0 5px;
+    font-weight:600;
+    color:#444;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:#f3f4f6;
+    outline:none;
+    margin-bottom:15px;
+    transition:.3s;
+    font-size:15px;
+}
+
+input:focus{
+    background:white;
+    box-shadow:0 0 0 3px rgba(102,126,234,0.2);
+}
+
+button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    background:#667eea;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#5468d4;
+    transform:translateY(-2px);
+}
+
+br{
+    display:none;
+}

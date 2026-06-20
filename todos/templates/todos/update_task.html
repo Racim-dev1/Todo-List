@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Update Task</title>
+    </head>
+    <body>
+        <div class="container">
+        <h1>Update Task</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Task Title:</label>
+            <input type="text" name="title" value="{{ task.title }}" required>
+            <label>
+                Completed:
+                <input type="checkbox" name="is_done" {% if task.is_done %}checked{% endif %}>
+            </label>
+            <button type="submit">Update Task</button>
+        </form>
+        <a href="{% url 'task_list' %}">Back to Task List</a>
+        </div>
+    </body>
+</html>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align:center;
+    font-size:2rem;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#667eea,#764ba2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+label{
+    display:block;
+    margin:10px 0 5px;
+    font-weight:600;
+    color:#444;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:#f3f4f6;
+    outline:none;
+    transition:.3s;
+    margin-bottom:15px;
+}
+
+input[type="text"]:focus{
+    background:white;
+    box-shadow:0 0 0 3px rgba(102,126,234,0.2);
+}
+
+input[type="checkbox"]{
+    transform:scale(1.2);
+    margin-left:8px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:#667eea;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+    margin-top:15px;
+}
+
+button:hover{
+    background:#5468d4;
+    transform:translateY(-2px);
+}
+
+a{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    text-decoration:none;
+    color:white;
+    background:#4CAF50;
+    padding:10px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+a:hover{
+    opacity:.9;
+    transform:translateY(-2px);
+}
